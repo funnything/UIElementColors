@@ -9,6 +9,29 @@
 import UIKit
 
 class ViewController: UITableViewController {
+    let colors: [UIColor] = [
+        .label,
+        .secondaryLabel,
+        .tertiaryLabel,
+        .quaternaryLabel,
+        .systemFill,
+        .secondarySystemFill,
+        .tertiarySystemFill,
+        .quaternarySystemFill,
+        .placeholderText,
+        .systemBackground,
+        .secondarySystemBackground,
+        .tertiarySystemBackground,
+        .systemGroupedBackground,
+        .secondarySystemGroupedBackground,
+        .tertiarySystemGroupedBackground,
+        .separator,
+        .opaqueSeparator,
+        .link,
+        .darkText,
+        .lightText
+    ]
+
     override func loadView() {
         super.loadView()
 
