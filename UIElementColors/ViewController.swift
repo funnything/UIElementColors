@@ -32,23 +32,18 @@ class ViewController: UITableViewController {
         .lightText
     ]
 
-    override func loadView() {
-        super.loadView()
-
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 64
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "okipu \(indexPath)"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! Cell
+        cell.label.text = "okipu \(indexPath)"
         return cell
     }
+}
+
+class Cell: UITableViewCell {
+    @IBOutlet weak var canvas: UIView!
+    @IBOutlet weak var label: UILabel!
 }
