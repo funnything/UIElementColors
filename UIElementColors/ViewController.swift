@@ -9,36 +9,39 @@
 import UIKit
 
 class ViewController: UITableViewController {
-    let colors: [UIColor] = [
-        .label,
-        .secondaryLabel,
-        .tertiaryLabel,
-        .quaternaryLabel,
-        .systemFill,
-        .secondarySystemFill,
-        .tertiarySystemFill,
-        .quaternarySystemFill,
-        .placeholderText,
-        .systemBackground,
-        .secondarySystemBackground,
-        .tertiarySystemBackground,
-        .systemGroupedBackground,
-        .secondarySystemGroupedBackground,
-        .tertiarySystemGroupedBackground,
-        .separator,
-        .opaqueSeparator,
-        .link,
-        .darkText,
-        .lightText
+    let colors: [(color: UIColor, name: String)] = [
+        (.label, "label"),
+        (.secondaryLabel, "secondaryLabel"),
+        (.tertiaryLabel, "tertiaryLabel"),
+        (.quaternaryLabel, "quaternaryLabel"),
+        (.systemFill, "systemFill"),
+        (.secondarySystemFill, "secondarySystemFill"),
+        (.tertiarySystemFill, "tertiarySystemFill"),
+        (.quaternarySystemFill, "quaternarySystemFill"),
+        (.placeholderText, "placeholderText"),
+        (.systemBackground, "systemBackground"),
+        (.secondarySystemBackground, "secondarySystemBackground"),
+        (.tertiarySystemBackground, "tertiarySystemBackground"),
+        (.systemGroupedBackground, "systemGroupedBackground"),
+        (.secondarySystemGroupedBackground, "secondarySystemGroupedBackground"),
+        (.tertiarySystemGroupedBackground, "tertiarySystemGroupedBackground"),
+        (.separator, "separator"),
+        (.opaqueSeparator, "opaqueSeparator"),
+        (.link, "link"),
+        (.darkText, "darkText"),
+        (.lightText, "lightText")
     ]
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 64
+        return colors.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let color = colors[indexPath.row]
+
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! Cell
-        cell.label.text = "okipu \(indexPath)"
+        cell.canvas.backgroundColor = color.color
+        cell.label.text = color.name
         return cell
     }
 }
