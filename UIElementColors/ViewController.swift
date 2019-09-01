@@ -32,6 +32,10 @@ class ViewController: UITableViewController {
         (.lightText, "lightText")
     ]
 
+    @IBAction func toggle(_ sender: Any) {
+        print("toggle")
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return colors.count
     }

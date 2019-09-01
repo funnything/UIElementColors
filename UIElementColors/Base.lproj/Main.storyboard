@@ -6,7 +6,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--UI Element Colors-->
         <scene sceneID="vB6-Pm-Feb">
             <objects>
                 <tableViewController id="wmQ-Jm-wTS" customClass="ViewController" customModule="UIElementColors" customModuleProvider="target" sceneMemberID="viewController">
@@ -24,7 +24,7 @@
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mtC-Bl-JAb">
                                             <rect key="frame" x="8" y="8" width="44.5" height="44.5"/>
-                                            <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="44" id="DsV-pa-kDE"/>
                                                 <constraint firstAttribute="width" secondItem="mtC-Bl-JAb" secondAttribute="height" multiplier="1:1" id="c8t-F8-JNb"/>
@@ -57,7 +57,13 @@
                             <outlet property="delegate" destination="wmQ-Jm-wTS" id="kad-AQ-WOR"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="MQx-WO-nuK"/>
+                    <navigationItem key="navigationItem" title="UI Element Colors" id="MQx-WO-nuK">
+                        <barButtonItem key="rightBarButtonItem" title="Toggle" id="X4b-NH-bLf">
+                            <connections>
+                                <action selector="toggle:" destination="wmQ-Jm-wTS" id="e7K-Ca-0qa"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bfa-KD-FoR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
