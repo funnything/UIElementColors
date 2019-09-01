@@ -33,7 +33,12 @@ class ViewController: UITableViewController {
     ]
 
     @IBAction func toggle(_ sender: Any) {
-        print("toggle")
+        var vc: UIViewController = self
+        while let parent = vc.parent {
+            vc = parent
+        }
+
+        vc.overrideUserInterfaceStyle = vc.overrideUserInterfaceStyle == .dark ? .light : .dark
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
