@@ -39,6 +39,7 @@ class ViewController: UITableViewController {
         }
 
         vc.overrideUserInterfaceStyle = vc.overrideUserInterfaceStyle == .dark ? .light : .dark
+        tableView.reloadData()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -50,7 +51,7 @@ class ViewController: UITableViewController {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! Cell
         cell.canvas.backgroundColor = color.color
-        cell.label.text = color.name
+        cell.label.text = "\(color.color.hex) \(color.name)"
         return cell
     }
 }
@@ -58,4 +59,26 @@ class ViewController: UITableViewController {
 class Cell: UITableViewCell {
     @IBOutlet weak var canvas: UIView!
     @IBOutlet weak var label: UILabel!
+}
+
+extension UIColor {
+    var hex: String {
+        var r: CGFloat = 0
+        var g: CGFloat = 0
+        var b: CGFloat = 0
+        var a: CGFloat = 0
+        getRed(&r, green: &g, blue: &b, alpha: &a)
+
+        if a == 1 {
+            return String(format: "#%02X%02X%02X", (r * 255).rounding, (g * 255).rounding, (b * 255).rounding)
+        } else {
+            return String(format: "#%02X%02X%02X%02X", (a * 255).rounding, (r * 255).rounding, (g * 255).rounding, (b * 255).rounding)
+        }
+    }
+}
+
+extension CGFloat {
+    var rounding: Int {
+        return Int(exactly: rounded())!
+    }
 }
