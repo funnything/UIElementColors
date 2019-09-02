@@ -51,7 +51,7 @@ class ViewController: UITableViewController {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! Cell
         cell.canvas.backgroundColor = color.color
-        cell.label.text = "\(color.color.hex) \(color.name)"
+        cell.label.text = "\(color.color.hex) \(color.color.premultipliedHex) \(color.name)"
         return cell
     }
 }
@@ -72,8 +72,36 @@ extension UIColor {
         if a == 1 {
             return String(format: "#%02X%02X%02X", (r * 255).rounding, (g * 255).rounding, (b * 255).rounding)
         } else {
-            return String(format: "#%02X%02X%02X%02X", (a * 255).rounding, (r * 255).rounding, (g * 255).rounding, (b * 255).rounding)
+            return String(format: "(%g)#%02X%02X%02X", a, (r * 255).rounding, (g * 255).rounding, (b * 255).rounding)
         }
+    }
+
+    var premultipliedHex: String {
+        var a: CGFloat = 0
+        getRed(nil, green: nil, blue: nil, alpha: &a)
+
+        return interpolate(with: .systemBackground, ratio: 1 - a).withAlphaComponent(1).hex
+    }
+
+    func interpolate(with color: UIColor, ratio: CGFloat) -> UIColor {
+        var srcRed: CGFloat = 0
+        var srcGreen: CGFloat = 0
+        var srcBlue: CGFloat = 0
+        var srcAlpha: CGFloat = 0
+        getRed(&srcRed, green: &srcGreen, blue: &srcBlue, alpha: &srcAlpha)
+
+        var dstRed: CGFloat = 0
+        var dstGreen: CGFloat = 0
+        var dstBlue: CGFloat = 0
+        var dstAlpha: CGFloat = 0
+        color.getRed(&dstRed, green: &dstGreen, blue: &dstBlue, alpha: &dstAlpha)
+
+        return UIColor(
+            red: srcRed + (dstRed - srcRed) * ratio,
+            green: srcGreen + (dstGreen - srcGreen) * ratio,
+            blue: srcBlue + (dstBlue - srcBlue) * ratio,
+            alpha: srcAlpha + (dstAlpha - srcAlpha) * ratio
+        )
     }
 }
 
