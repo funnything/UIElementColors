@@ -51,14 +51,16 @@ class ViewController: UITableViewController {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! Cell
         cell.canvas.backgroundColor = color.color
-        cell.label.text = "\(color.color.hex) \(color.color.premultipliedHex) \(color.name)"
+        cell.nameLabel.text = color.name
+        cell.codeLabel.text = "\(color.color.hex) \(color.color.premultipliedHex)"
         return cell
     }
 }
 
 class Cell: UITableViewCell {
     @IBOutlet weak var canvas: UIView!
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var codeLabel: UILabel!
 }
 
 extension UIColor {
