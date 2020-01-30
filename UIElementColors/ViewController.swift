@@ -29,7 +29,22 @@ class ViewController: UITableViewController {
         (.opaqueSeparator, "opaqueSeparator"),
         (.link, "link"),
         (.darkText, "darkText"),
-        (.lightText, "lightText")
+        (.lightText, "lightText"),
+        (.systemRed, "systemRed"),
+        (.systemGreen, "systemGreen"),
+        (.systemBlue, "systemBlue"),
+        (.systemOrange, "systemOrange"),
+        (.systemYellow, "systemYellow"),
+        (.systemPink, "systemPink"),
+        (.systemPurple, "systemPurple"),
+        (.systemTeal, "systemTeal"),
+        (.systemIndigo, "systemIndigo"),
+        (.systemGray, "systemGray"),
+        (.systemGray2, "systemGray2"),
+        (.systemGray3, "systemGray3"),
+        (.systemGray4, "systemGray4"),
+        (.systemGray5, "systemGray5"),
+        (.systemGray6, "systemGray6")
     ]
 
     @IBAction func toggle(_ sender: Any) {
